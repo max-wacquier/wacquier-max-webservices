@@ -1,18 +1,15 @@
-import express from 'express';
-import connect from './db/connect.js';
+import express from 'express'
+import connect from './db/connect.js'
+import routes from '#src/routes/index'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const port = process.env.SERVER_PORT || 3000;
-
-console.log('process.env.SERVER_PORT : ', process.env.SERVER_PORT);
+const port = process.env.SERVER_PORT || 3000
 
 const app = express()
 connect()
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello !'})
-});
+app.use(routes)
 
 app.listen(port, () => {
     console.log(`Listening: http://localhost:${port}`)

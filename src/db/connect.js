@@ -22,14 +22,13 @@ const MONGO_URI_STRING = [
 ].join('')
 
 const connect = () => {
-    console.log('MONGO_USER : ', MONGO_USER);
     mongoose.connect(MONGO_URI_STRING)
       .then(() => {
         return console.info(`Successfully connected to ${MONGO_CLUSTER}@${MONGO_DATABASE}`)
       })
       .catch(error => {
         console.error('Error connecting to database: ', error)
-        return process.exit(1);
+        return process.exit(1)
       });
     mongoose.connection.on('disconnected', connect)
 }
