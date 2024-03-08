@@ -51,6 +51,30 @@ const exposeServices = {
         } catch (error) {
             throw error
         }
+    },
+    findOneUserByEmail: async ({email}) => {
+        try {
+            const findUser = await User.findOne({email})
+            return findUser
+        } catch (error) {
+            throw error
+        }
+    },
+    updateUserToken: async ({id, refreshToken}) => {
+        const query = {
+            _id:id
+        }
+        const updateQ = {
+            $set:{
+                refreshToken
+            }
+        }
+        try {
+            const toUpdate = await User.findOneAndUpdate(query, updateQ, {new:true})
+            return toUpdate
+        } catch (error) {
+            throw error
+        }
     }
 }
 
