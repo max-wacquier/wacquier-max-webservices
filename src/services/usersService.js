@@ -26,8 +26,10 @@ const exposeServices = {
             ...rawData,
             password:hash
         }
+        console.log(newUserData);
         try {
             const toSave  = new User(newUserData)
+            console.log(toSave);
             const newUser = toSave.save()   
             return newUser
         } catch (error) {

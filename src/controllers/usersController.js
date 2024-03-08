@@ -12,7 +12,7 @@ const exposeController = {
         return res.json(oneUser)
     },
     createUser: async (req ,res) => {
-        console.log(req)
+        // console.log(req)
         const {body}  = req
         console.log(body)
         // Le body de ma requete est undefined au lieu d'etre un json, cela fonctionne avec les données statiques en commentaire
@@ -20,7 +20,8 @@ const exposeController = {
         //     lastName: "le roi du gateau",
         //     firstName: "Pepito",
         //     email: "pepito.leroidugateau@gmail.com",
-        //     password: "pepito"
+        //     password: "pepito",
+        //     skills: ["65eb23e5c174c33cdcf6398f", "65eb23f385cb570a4cc77749"]
         // }
         try {
             const registeredUser = await usersService.createUser(body)     
